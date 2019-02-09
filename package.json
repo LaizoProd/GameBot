@@ -1,0 +1,17 @@
+{
+  "name": "gamebot",
+  "version": "1.0.0",
+  "description": "discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laizo",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "djs-commands": "^1.2.2"
+  },
+  "devDependencies": {},
+  "keywords": []
+}

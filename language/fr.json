@@ -1,0 +1,14 @@
+{
+    "hTitle": "Aide : GameBot",
+	"hAdminTitle": "Aide administrateur : GameBot",
+	"hDesciption" : "Gamebot est un bot codé par Laizo, il contient plusieurs jeux jouables sur Discord",
+	"hGames" : "*jeu* disponibles :\n Class Time (bientot)",
+	"hCommandsTitle" : "Commandes",
+	"hCommands" : "```.aide : permet d'avoir la liste des commandes \n.*jeu* : perment de lancer une partie de ce *jeu* \n.*jeu* aide : perment d'avoir des informations sur ce *jeu*``` ",
+	"hCommandsAdmin" : "```.aide :permet d'avoir la liste des commandes \n.*jeu* :perment de lancer une partie de ce *jeu* \n.*jeu* aide :perment d'avoir des informations sur ce *jeu* \n.pban *joueur* : empèche un joueur de créer une partie``` ",
+	"gEmbedParty" : "Rejoingnez la partie",
+	"gEmbedReact" : "Pour rejoindre la partie il vous suffit d'ajouter la réaction ✅ sous ce message et un nouveau channel apparaitra.",
+	"gEmbedGame" : "Vous ne connaisez pas le jeu ?",
+	"gEmbedHelp" : "Effectuez la commande `.themind aide` pour avoir toutes les infos",
+	"alreadyPlay" : "Vous êtes déjà en partie"
+}
