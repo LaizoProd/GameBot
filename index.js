@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
-const token = require("./token.json");
-const bot = new Discord.Client({ disableEveryone: true })
+const bot = new Discord.Client()
 const { CommandHandler } = require("djs-commands")
 const CH = new CommandHandler({
     folder: __dirname + '/commands/',
@@ -19,24 +18,19 @@ bot.on("message", async message => {
     if (message.channel.type === "dm") return;
     let args = message.content.split(" ");
     let command = CH.getCommand(args[0]);
-    const folEn = require("./language/en.json");
-    const folFr = require("./language/fr.json");
     if (!command) return;
+    let setLanguage;
     if (fr.has(message.guild.id)) {
-        let setLanguage = folFr
-        try {
-            command.run(bot, message, args, fr, en, setLanguage);
-        } catch (e) {
-            console.log(e)
-        }
+        setLanguage = require("./language/fr.json");
     } else {
-        let Setlanguage = folEn
-        try {
-            command.run(bot, message, args, fr, en, Setlanguage);
-        } catch (e) {
-            console.log(e)
-        }
+        setLanguage = require("./language/en.json");
     }
-});
+    try {
+        command.run(bot, message, args, fr, en, setLanguage);
+    } catch (e) {
+        console.log(e)
+    }
+}
+);
 
-bot.login(token);
+bot.login(require("./token.json"));
