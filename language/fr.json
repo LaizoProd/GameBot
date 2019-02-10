@@ -10,5 +10,11 @@
 	"gEmbedReact" : "Pour rejoindre la partie il vous suffit d'ajouter la réaction ✅ sous ce message et un nouveau channel apparaitra.",
 	"gEmbedGame" : "Vous ne connaisez pas le jeu ?",
 	"gEmbedHelp" : "Effectuez la commande `.themind aide` pour avoir toutes les infos",
-	"alreadyPlay" : "Vous êtes déjà en partie"
+	"alreadyPlay" : "Vous êtes déjà en partie",
+	"rClassartTitle" : "Règles de Class Time Lettres",
+	"rClassartTitleParty" : "Déroulement de la partie",
+	"rClassartParty" : "des lettres sont envoyées par le bot, le premier qui arrive à les remettre dans l'ordre gagne la manche. Il faut gagner 5 manches dont la difficulté est exponentielle pour gagner.",
+	"Banned" : "Vous ne pouvez pas créer de partie car vous avez été banni sur ce serveur",
+	"bAnnounce" : "vous ne pouvez dorénavant plus jouer sur ce serveur !",
+	"bNoPlayer" : "Vous n'avez pas mentionné de joueur"
 }
