@@ -10,12 +10,11 @@ module.exports = class themind {
             if (message.member.hasPermission("ADMINISTRATOR")) {
                 let member = message.mentions.members.first();
                 if (member) {
-                    console.log(`${member} ne peux plus jouer`)
                     var role = message.guild.roles.find(role => role.name === "pban")
                     member.addRole(role)
-                    message.channel.send(`${member} vous ne pouvez dorénavant plus jouer !`)
+                    message.channel.send(`${member} ${setLanguage.bAnnounce}`)
                 } else {
-                    message.author.send("Vous n'avez pas précisé de joueur")
+                    message.author.send(setLanguage.bNoPlayer)
                 }
             }
         } else {
