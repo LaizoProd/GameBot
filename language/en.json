@@ -10,5 +10,11 @@
 	"gEmbedReact" : "To join the game just add the reaction ✅ under this message and a new channel will appear",
 	"gEmbedGame" : "You do  not know the game ?",
 	"gEmbedHelp" : "Make the command `.themind aide` to have all the information",
-	"alreadyPlay" : "You are already in a game"
+	"alreadyPlay" : "You are already in a game",
+	"rClassartTitle" : "Rules of Class Time Letters",
+	"rClassartTitleParty" : "Course of the game",
+	"rClassartParty" : "letters are sent by the bot, the first one who manages to put them back in order wins the round. You have to wins 5 rounds whose difficulty is exponential to win.",
+	"Banned" : "You can not create a game because you have been banned on this server.",
+	"bAnnounce" : "you can not play on this server anymore !",
+	"bNoPlayer" : "You did not mention a player."
 }
