@@ -9,6 +9,8 @@ module.exports = class themind {
     run(bot, message, args, fr, en, setLanguage) {
         var embedRole = 1;
         var embedChannel = 1;
+        var editRole;
+        var editChannel;
         message.delete()
         if (message.member.hasPermission("ADMINISTRATOR")) {
             const language = new Discord.RichEmbed()
@@ -50,6 +52,7 @@ module.exports = class themind {
                                                 .then(embedMessage => embedMessage.react("✅").then(() => embedMessage.react("❎"))
                                                     .then(bot.on("messageReactionAdd", function (reaction, user) {
                                                         if (embedMessage.id === reaction.message.id) {
+                                                            editRole = embedMessage;
                                                             if (user.id == "540103334309265408") {
                                                             } else {
                                                                 reaction.remove(user);
@@ -80,6 +83,7 @@ module.exports = class themind {
                                                                                 .then(embedMessage => embedMessage.react("✅").then(() => embedMessage.react("❎"))
                                                                                     .then(bot.on("messageReactionAdd", function (reaction, user) {
                                                                                         if (embedMessage.id === reaction.message.id) {
+                                                                                            editChannel = embedMessage;
                                                                                             if (user.id == "540103334309265408") {
                                                                                             } else {
                                                                                                 reaction.remove(user);
@@ -104,13 +108,19 @@ module.exports = class themind {
                                                                                         }
                                                                                     }))
                                                                                 )
-                                                                        }
+                                                                            } else {
+                                                                                editChannel.embeds[0].fields[0].value = setLanguage.cEmbedChannel;
+                                                                                editChannel.edit(new Discord.RichEmbed(editChannel.embeds[0]));
+                                                                            }
                                                                     }, 2000);
                                                                 }
                                                             }
                                                         }
                                                     }))
                                                 )
+                                        } else {
+                                            editRole.embeds[0].fields[0].value = setLanguage.cEmbedPban;
+                                            editRole.edit(new Discord.RichEmbed(editRole.embeds[0]));
                                         }
                                     }, 2000);
                                 }
