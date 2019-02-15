@@ -7,6 +7,8 @@ module.exports = class themind {
             this.usage = '.configuration'
     }
     run(bot, message, args, fr, en, setLanguage) {
+        var embedRole = 1;
+        var embedChannel = 1;
         message.delete()
         if (message.member.hasPermission("ADMINISTRATOR")) {
             const language = new Discord.RichEmbed()
@@ -33,86 +35,84 @@ module.exports = class themind {
                                         setLanguage = require("../language/en.json");
                                         en.add(message.guild.id);
                                     }
-                                    const newEmbed = new Discord.RichEmbed()
-                                        .setTitle("Configuration")
-                                        .setColor("#ff0000")
-                                        .setFooter("GameBot by Laizo", bot.user.avatarURL)
-                                        .addField("Language",
-                                            setLanguage.Language)
-                                    reaction.message.edit(newEmbed)
+                                    reaction.message.embeds[0].fields[0].value = setLanguage.Language;
+                                    reaction.message.edit(new Discord.RichEmbed(reaction.message.embeds[0]));
                                     setTimeout(function () {
-                                        const pbanembed = new Discord.RichEmbed()
-                                            .setTitle("Configuration")
-                                            .setColor("#ff0000")
-                                            .setFooter("GameBot by Laizo", bot.user.avatarURL)
-                                            .addField("Ban role",
-                                                setLanguage.cEmbedPban)
-                                        message.channel.send(pbanembed)
-                                            .then(embedMessage => embedMessage.react("✅").then(() => embedMessage.react("❎"))
-                                                .then(bot.on("messageReactionAdd", function (reaction, user) {
-                                                    if (embedMessage.id === reaction.message.id) {
-                                                        if (user.id == "540103334309265408") {
-                                                        } else {
-                                                            reaction.remove(user);
-                                                            if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
-                                                                if (reaction.emoji.name === "✅") {
-                                                                    if (message.guild.roles.find(role => role.name === "pban") == undefined) {
-                                                                        console.log(`pban created`)
-                                                                        message.member.guild.createRole({
-                                                                            name: `pban`
-                                                                        })
+                                        if (embedRole == 1) {
+                                            embedRole += 1;
+                                            const pbanembed = new Discord.RichEmbed()
+                                                .setTitle("Configuration")
+                                                .setColor("#ff0000")
+                                                .setFooter("GameBot by Laizo", bot.user.avatarURL)
+                                                .addField("Ban role",
+                                                    setLanguage.cEmbedPban)
+                                            message.channel.send(pbanembed)
+                                                .then(embedMessage => embedMessage.react("✅").then(() => embedMessage.react("❎"))
+                                                    .then(bot.on("messageReactionAdd", function (reaction, user) {
+                                                        if (embedMessage.id === reaction.message.id) {
+                                                            if (user.id == "540103334309265408") {
+                                                            } else {
+                                                                reaction.remove(user);
+                                                                if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
+                                                                    if (reaction.emoji.name === "✅") {
+                                                                        if (message.guild.roles.find(role => role.name === "pban") == undefined) {
+                                                                            console.log(`pban created`)
+                                                                            message.member.guild.createRole({
+                                                                                name: `pban`
+                                                                            })
+                                                                        }
+                                                                    } else {
+                                                                        if (message.guild.roles.find(role => role.name === "pban")) {
+                                                                            console.log(`pban deleted`)
+                                                                            message.member.guild.roles.find(role => role.name === "pban").delete();
+                                                                        }
                                                                     }
-                                                                } else {
-                                                                    if (message.guild.roles.find(role => role.name === "pban")) {
-                                                                        console.log(`pban deleted`)
-                                                                        message.member.guild.roles.find(role => role.name === "pban").delete();
-                                                                    }
-                                                                }
-                                                                setTimeout(function () {
-                                                                    const channel = new Discord.RichEmbed()
-                                                                        .setTitle("Configuration")
-                                                                        .setColor("#ff0000")
-                                                                        .setFooter("GameBot by Laizo", bot.user.avatarURL)
-                                                                        .addField(setLanguage.cEmbedChannelTitle,
-                                                                            setLanguage.cEmbedChannel)
-                                                                    message.channel.send(channel)
-                                                                        .then(embedMessage => embedMessage.react("✅").then(() => embedMessage.react("❎"))
-                                                                            .then(bot.on("messageReactionAdd", function (reaction, user) {
-                                                                                if (embedMessage.id === reaction.message.id) {
-                                                                                    if (user.id == "540103334309265408") {
-                                                                                    } else {
-                                                                                        reaction.remove(user);
-                                                                                        if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
-                                                                                            if (reaction.emoji.name === "✅") {
-                                                                                                if (message.guild.channels.find(channel => channel.name === "Parties") == null) {
-                                                                                                    console.log(`Channel created`)
-                                                                                                    message.guild.createChannel("Parties", "text", [{
-                                                                                                        id: message.guild.roles.find(role => role.name === `@everyone`).id,
-                                                                                                        allow: ['VIEW_CHANNEL'],
-                                                                                                        deny: ['SEND_MESSAGES']
-                                                                                                    }]);
-                                                                                                    setTimeout(function () {
-                                                                                                        console.log(message.guild.channels.find(channel => channel.name === "Parties"))
-                                                                                                    }, 1000);
-                                                                                                }
+                                                                    setTimeout(function () {
+                                                                        if (embedChannel == 1) {
+                                                                            embedChannel += 1;
+                                                                            const channel = new Discord.RichEmbed()
+                                                                                .setTitle("Configuration")
+                                                                                .setColor("#ff0000")
+                                                                                .setFooter("GameBot by Laizo", bot.user.avatarURL)
+                                                                                .addField(setLanguage.cEmbedChannelTitle,
+                                                                                    setLanguage.cEmbedChannel)
+                                                                            message.channel.send(channel)
+                                                                                .then(embedMessage => embedMessage.react("✅").then(() => embedMessage.react("❎"))
+                                                                                    .then(bot.on("messageReactionAdd", function (reaction, user) {
+                                                                                        if (embedMessage.id === reaction.message.id) {
+                                                                                            if (user.id == "540103334309265408") {
                                                                                             } else {
-                                                                                                if (message.guild.channels.find(channel => channel.name === "Parties")) {
-                                                                                                    console.log(`channel deleted`)
-                                                                                                    message.member.guild.channels.find(channel => channel.name === "Parties").delete();
+                                                                                                reaction.remove(user);
+                                                                                                if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
+                                                                                                    if (reaction.emoji.name === "✅") {
+                                                                                                        if (message.member.guild.channels.find(channel => channel.name === "parties") == null) {
+                                                                                                            console.log(`Channel created`)
+                                                                                                            message.guild.createChannel("parties", "text", [{
+                                                                                                                id: message.member.guild.roles.find(role => role.name === `@everyone`).id,
+                                                                                                                allow: ['VIEW_CHANNEL'],
+                                                                                                                deny: ['SEND_MESSAGES']
+                                                                                                            }]);
+                                                                                                        }
+                                                                                                    } else {
+                                                                                                        if (message.member.guild.channels.find(channel => channel.name === "parties")) {
+                                                                                                            console.log(`channel deleted`)
+                                                                                                            message.member.guild.channels.find(channel => channel.name === "parties").delete();
+                                                                                                        }
+                                                                                                    }
                                                                                                 }
                                                                                             }
                                                                                         }
-                                                                                    }
-                                                                                }
-                                                                            }))
-                                                                        )
-                                                                }, 1000);
+                                                                                    }))
+                                                                                )
+                                                                        }
+                                                                    }, 2000);
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                }))
-                                            )
-                                    }, 1000);
+                                                    }))
+                                                )
+                                        }
+                                    }, 2000);
                                 }
                             }
                         }
@@ -120,4 +120,4 @@ module.exports = class themind {
                 )
         }
     }
-}
+};
