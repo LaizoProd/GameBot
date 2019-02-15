@@ -1,11 +1,12 @@
 {
+    "Language" : "Langage définit sur : Français. To change it add a reaction again.",
     "hTitle": "Aide : GameBot",
 	"hAdminTitle": "Aide administrateur : GameBot",
 	"hDesciption" : "Gamebot est un bot codé par Laizo, il contient plusieurs jeux jouables sur Discord",
 	"hGames" : "*jeu* disponibles :\n Class Time (bientot)",
 	"hCommandsTitle" : "Commandes",
-	"hCommands" : "```.aide : permet d'avoir la liste des commandes \n.*jeu* : perment de lancer une partie de ce *jeu* \n.*jeu* aide : perment d'avoir des informations sur ce *jeu*``` ",
-	"hCommandsAdmin" : "```.aide :permet d'avoir la liste des commandes \n.*jeu* :perment de lancer une partie de ce *jeu* \n.*jeu* aide :perment d'avoir des informations sur ce *jeu* \n.pban *joueur* : empèche un joueur de créer une partie``` ",
+	"hCommands" : "```.aide : permet d'avoir la liste des commandes \n.*jeu* : permet de lancer une partie de ce *jeu* \n.*jeu* aide : permet d'avoir des informations sur ce *jeu*``` ",
+	"hCommandsAdmin" : "```.aide :permet d'avoir la liste des commandes \n.*jeu* : permet de lancer une partie de ce *jeu* \n.*jeu* aide : permet d'avoir des informations sur ce *jeu* \n.pban *joueur* : empèche un joueur de créer une partie``` ",
 	"gEmbedParty" : "Rejoingnez la partie",
 	"gEmbedReact" : "Pour rejoindre la partie il vous suffit d'ajouter la réaction ✅ sous ce message et un nouveau channel apparaitra.",
 	"gEmbedGame" : "Vous ne connaisez pas le jeu ?",
@@ -16,5 +17,8 @@
 	"rClassartParty" : "des lettres sont envoyées par le bot, le premier qui arrive à les remettre dans l'ordre gagne la manche. Il faut gagner 5 manches dont la difficulté est exponentielle pour gagner.",
 	"Banned" : "Vous ne pouvez pas créer de partie car vous avez été banni sur ce serveur",
 	"bAnnounce" : "vous ne pouvez dorénavant plus jouer sur ce serveur !",
-	"bNoPlayer" : "Vous n'avez pas mentionné de joueur"
+	"bNoPlayer" : "Vous n'avez pas mentionné de joueur",
+	"cEmbedPban" : "Voulez vous créer le role 'pban' ? Celui-ci activera les commandes '.pban' et '.punban' qui permetent respectivement d'interdire et de réautoriser un membre à rejoindre ou à créer une partie.",
+	"cEmbedChannelTitle" : "Channel de Parties",
+	"cEmbedChannel" : "Voulez voues créer le channel 'Parties' ? Toutes les invitations de parties y seront envoyées, vous pouvez le modifier mais pas le renomer"
 }
