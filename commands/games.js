@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const inGame = new Set();
 
-
 module.exports = class jeux {
     constructor() {
         this.name = 'classletter',
@@ -22,7 +21,6 @@ module.exports = class jeux {
                         setTimeout(function () {
                             var role = message.guild.roles.find(role => role.name === `${author} ${args[0]}`)
                             setTimeout(function () {
-                                message.member.addRole(role)
                                 const game = new Discord.RichEmbed()
                                     .setTitle(`${author} ${args[0]}`)
                                     .setColor("#ffffff")
@@ -36,13 +34,14 @@ module.exports = class jeux {
                                         embedMessage.react("✅");
                                         bot.on("messageReactionAdd", function (reaction, user) {
                                             if (embedMessage.id === reaction.message.id) {
-                                                if (!inGame.has(message.author.id)) {
+                                                if (!inGame.has(reaction.message.guild.members.get(user.id))) {
                                                     var member = reaction.message.guild.members.get(user.id)
                                                     inGame.add(member.id);
-                                                    reaction.message.guild.members.get(user.id).addRole(role);
+                                                    member.addRole(role);
                                                     console.log(`${member} join ${author} ${args[0]}`)
                                                 } else {
-                                                    reaction.message.guild.members.get(user.id).send(setLanguage.alreadyPlay)
+                                                    if (user.id !== bot.user.id)
+                                                        reaction.message.guild.members.get(user.id).send(setLanguage.alreadyPlay)
                                                 }
                                             }
                                         })
@@ -69,7 +68,6 @@ module.exports = class jeux {
                             .setFooter("GameBot by Laizo", bot.user.avatarURL)
                             .addField(setLanguage.rClassartTitleParty,
                                 setLanguage.rClassartParty)
-                        message.delete()
                         message.channel.send(themindhelp)
                     }
                 }
@@ -77,7 +75,7 @@ module.exports = class jeux {
                 message.author.send(setLanguage.Banned)
             }
         } else {
-            message.channel.send("The server is not configured, perform : .config")
+            message.channel.send("The server is not configured, an administrator must perform : .config")
         }
     }
 };
