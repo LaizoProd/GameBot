@@ -1,5 +1,8 @@
 {
-    "Language" : "Langage définit sur : Français. To change it add a reaction again.",
+    "cLanguage" : "Langage définit sur : Français. To change it add a reaction again.",
+	"cEmbedPban" : "Voulez vous créer le role 'pban' ? Celui-ci activera les commandes '.pban' et '.punban' qui permetent respectivement d'interdire et de réautoriser un membre à rejoindre ou à créer une partie.",
+	"cEmbedChannel" : "Voulez voues créer le channel 'invitation' ? Toutes les invitations de parties y seront envoyées.",
+	
     "hTitle": "Aide : GameBot",
 	"hAdminTitle": "Aide administrateur : GameBot",
 	"hDesciption" : "Gamebot est un bot codé par Laizo, il contient plusieurs jeux jouables sur Discord",
@@ -7,18 +10,28 @@
 	"hCommandsTitle" : "Commandes",
 	"hCommands" : "```.aide : permet d'avoir la liste des commandes \n.*jeu* : permet de lancer une partie de ce *jeu* \n.*jeu* aide : permet d'avoir des informations sur ce *jeu*``` ",
 	"hCommandsAdmin" : "```.aide :permet d'avoir la liste des commandes \n.*jeu* : permet de lancer une partie de ce *jeu* \n.*jeu* aide : permet d'avoir des informations sur ce *jeu* \n.pban *joueur* : empèche un joueur de créer une partie``` ",
+	
+	"gBanned" : "You can not create a game because you have been banned on this server.",
+	"gTitle" : "Jeux disponibles",
+	"gMultiTitle" : "Jeux multijoueurs",
+	"gMulti" : "```Classlettre```",
+	"gSoloTitle" : "Jeux solo",
+	"gSolo" : "```histoire```",
 	"gEmbedParty" : "Rejoingnez la partie",
 	"gEmbedReact" : "Pour rejoindre la partie il vous suffit d'ajouter la réaction ✅ sous ce message et un nouveau channel apparaitra.",
 	"gEmbedGame" : "Vous ne connaisez pas le jeu ?",
 	"gEmbedHelp" : "Effectuez la commande `.themind aide` pour avoir toutes les infos",
-	"alreadyPlay" : "Vous êtes déjà en partie",
-	"rClassartTitle" : "Règles de Class Time Lettres",
-	"rClassartTitleParty" : "Déroulement de la partie",
-	"rClassartParty" : "des lettres sont envoyées par le bot, le premier qui arrive à les remettre dans l'ordre gagne la manche. Il faut gagner 5 manches dont la difficulté est exponentielle pour gagner.",
-	"Banned" : "Vous ne pouvez pas créer de partie car vous avez été banni sur ce serveur",
+	
+	"gAlreadyPlay" : "Vous êtes déjà en partie",
+	"rClassletterTitle" : "Règles de Class Time Lettres",
+	"rClassletterTitleParty" : "Déroulement de la partie",
+	"rClassletterParty" : "des lettres sont envoyées par le bot, le premier qui arrive à les remettre dans l'ordre gagne la manche. Il faut gagner 5 manches dont la difficulté est exponentielle pour gagner.",
+
 	"bAnnounce" : "vous ne pouvez dorénavant plus jouer sur ce serveur !",
 	"bNoPlayer" : "Vous n'avez pas mentionné de joueur",
-	"cEmbedPban" : "Voulez vous créer le role 'pban' ? Celui-ci activera les commandes '.pban' et '.punban' qui permetent respectivement d'interdire et de réautoriser un membre à rejoindre ou à créer une partie.",
-	"cEmbedChannelTitle" : "Channel de Parties",
-	"cEmbedChannel" : "Voulez voues créer le channel 'Parties' ? Toutes les invitations de parties y seront envoyées, vous pouvez le modifier mais pas le renomer"
+	"bImpossibleBan" : "Cette commande n'est pas activée, si vous souhaitez l'activer ajouter la réaction ✅ sous le message de configuration (effectuez .config si vous n'avez plus acces à ce message)",
+	
+	"sTitle" : "Histoire",
+	"sChooseTitle" : "Histoires disponibles",
+	"sChoose" : "💀 This night"
 }
