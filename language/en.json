@@ -1,5 +1,8 @@
 {
-    "Language" : "Language sets on : English. To change it add a reaction again.",
+    "cLanguage" : "Language sets on : English. To change it add a reaction again.",
+	"cEmbedPban" : "Do you want to create the 'pban' role ? It will activate the command '.pban' and '.punban' which respectively prohibit and reauthorize a member to join or create a party.",
+	"cEmbedChannel" : "Voulez voues créer le channel 'invitation' ? Toutes les invitations de parties y seront envoyées, vous pouvez le modifier mais pas le renomer",
+	
     "hTitle": "Help : GameBot",
 	"hAdminTitle": "Help administrator : GameBot",
 	"hDesciption" : "Gamebot is a bot coded by Laizo, it contains several playable games on Discord",
@@ -7,18 +10,28 @@
 	"hCommandsTitle" : "Commands",
 	"hCommands" : "```.help : allows to have the list of commands \n.*game* : allows to play a game of this *game* \n.*game* help : allows to have information about this *game*``` ",
 	"hCommandsAdmin" : "```.help : allows to have the list of commands \n.*game* : allows to play a game of this *game* \n.*game* help : allows to have information about this *game* \n.pban *joueur* : prevents a player to play a game``` ",
+	
+	"gBanned" : "You can not create a game because you have been banned on this server.",
+	"gTitle" : "Games available",
+	"gMultiTitle" : "Multiplayer games",
+	"gMulti" : "```Classletter```",
+	"gSoloTitle" : "solo games",
+	"gSolo" : "```story```",
 	"gEmbedParty" : "Join the game",
 	"gEmbedReact" : "To join the game just add the reaction ✅ under this message and a new channel will appear",
 	"gEmbedGame" : "You do  not know the game ?",
 	"gEmbedHelp" : "Make the command `.themind aide` to have all the information",
-	"alreadyPlay" : "You are already in a game",
-	"rClassartTitle" : "Rules of Class Time Letters",
-	"rClassartTitleParty" : "Course of the game",
-	"rClassartParty" : "letters are sent by the bot, the first one who manages to put them back in order wins the round. You have to wins 5 rounds whose difficulty is exponential to win.",
-	"Banned" : "You can not create a game because you have been banned on this server.",
+	"gAlreadyPlay" : "You are already in a game",
+	
+	"rClassletterTitle" : "Rules of Class Time Letters",
+	"rClassletterTitleParty" : "Course of the game",
+	"rClassletterParty" : "letters are sent by the bot, the first one who manages to put them back in order wins the round. You have to wins 5 rounds whose difficulty is exponential to win.",
+
 	"bAnnounce" : "you can not play on this server anymore !",
 	"bNoPlayer" : "You did not mention a player.",
-	"cEmbedPban" : "Do you want to create the 'pban' role ? It will activate the command '.pban' and '.punban' which respectively prohibit and reauthorize a member to join or create a party.",
-	"cEmbedChannelTitle" : "Game Channel",
-	"cEmbedChannel" : "Voulez voues créer le channel 'Parties' ? Toutes les invitations de parties y seront envoyées, vous pouvez le modifier mais pas le renomer"
+	"bImpossibleBan" : "Cette commande n'est pas activée, si vous souhaitez l'activer ajouter la réaction ✅ sous le message de configuration (effectuez .config si vous n'avez plus acces à ce message)",
+	
+	"sTitle" : "Story",
+	"sChooseTitle" : "Available stories",
+	"sChoose" : "💀 This night"
 }
