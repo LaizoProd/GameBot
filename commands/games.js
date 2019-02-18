@@ -1,28 +1,35 @@
 const Discord = require("discord.js");
 const inGame = new Set();
 
-module.exports = class jeux {
+module.exports = class games {
     constructor() {
-        this.name = 'classletter',
-            this.alias = ['classlettre'],
-            this.usage = '.classletter'
+        this.name = 'games',
+            this.alias = ['jeux', 'classlettre', 'classletter'],
+            this.usage = '.game'
     }
     run(bot, message, args, fr, en, setLanguage) {
         message.delete()
         if (fr.has(message.guild.id) || en.has(message.guild.id)) {
-            if (!message.member.roles.find(role => role.name === "pban")) {
-                if (!args[1]) {
-                    if (!inGame.has(message.author.id)) {
-                        inGame.add(message.author.id);
-                        var author = message.author.username;
-                        message.member.guild.createRole({
-                            name: `${author} ${args[0]}`
-                        });
-                        setTimeout(function () {
-                            var role = message.guild.roles.find(role => role.name === `${author} ${args[0]}`)
+            if (args[0] === ".games" || ".jeux" || ";games" || ";jeux") {
+                const game = new Discord.RichEmbed()
+                    .setTitle(setLanguage.gTitle)
+                    .setColor("#008000")
+                    .setFooter("GameBot by Laizo", bot.user.avatarURL)
+                    .addField(setLanguage.gMultiTitle,
+                        setLanguage.gMulti)
+                    .addField(setLanguage.gSoloTitle,
+                        setLanguage.gSolo)
+                message.channel.send(game)
+            } else {
+                if (!message.member.roles.find(role => role.name === "pban")) {
+                    if (!args[1]) {
+                        if (!inGame.has(message.author.id)) {
+                            message.member.guild.createRole({
+                                name: `${message.author.username} ${args[0]}`
+                            });
                             setTimeout(function () {
                                 const game = new Discord.RichEmbed()
-                                    .setTitle(`${author} ${args[0]}`)
+                                    .setTitle(`${message.author.username} ${args[0]}`)
                                     .setColor("#ffffff")
                                     .setFooter("GameBot by Laizo", bot.user.avatarURL)
                                     .addField(setLanguage.gEmbedParty,
@@ -34,48 +41,49 @@ module.exports = class jeux {
                                         embedMessage.react("✅");
                                         bot.on("messageReactionAdd", function (reaction, user) {
                                             if (embedMessage.id === reaction.message.id) {
-                                                if (!inGame.has(reaction.message.guild.members.get(user.id))) {
-                                                    var member = reaction.message.guild.members.get(user.id)
+                                                var member = reaction.message.guild.members.get(user.id)
+                                                if (!inGame.has(member.id)) {
                                                     inGame.add(member.id);
-                                                    member.addRole(role);
-                                                    console.log(`${member} join ${author} ${args[0]}`)
+                                                    member.addRole(message.guild.roles.find(role => role.name === `${message.author.username} ${args[0]}`));
+                                                    console.log(`${member} join ${message.author.username} ${args[0]}`)
                                                 } else {
                                                     if (user.id !== bot.user.id)
-                                                        reaction.message.guild.members.get(user.id).send(setLanguage.alreadyPlay)
+                                                        member.send(setLanguage.alreadyPlay)
                                                 }
                                             }
                                         })
                                     });
-                                message.guild.createChannel(`${author} ${args[0]}`, "text", [{
+                                message.guild.createChannel(`${message.author.username} ${args[0]}`, "text", [{
                                     id: message.guild.roles.find(role => role.name === `@everyone`).id,
                                     deny: ['VIEW_CHANNEL'],
                                 },
                                 {
-                                    id: role.id,
+                                    id: message.guild.roles.find(role => role.name === `${message.author.username} ${args[0]}`).id,
                                     allow: ['VIEW_CHANNEL'],
                                 }]);
-                            }, 2000);
-                        }, 1000);
-                        return console.log(`${author} ${args[0]} created`);
+                            }, 1000);
+                            return console.log(`${message.author.username} ${args[0]} created`);
+                        } else {
+                            message.author.send(setLanguage.gAlreadyPlay)
+                        }
                     } else {
-                        message.author.send(setLanguage.alreadyPlay)
+                        if (args[0] === ".classletter" || ".classlettre" || ";classletter" || ";classlettre") {
+                            const themindhelp = new Discord.RichEmbed()
+                                .setTitle(setLanguage.rClassletterTitle)
+                                .setColor("#008000")
+                                .setFooter("GameBot by Laizo", bot.user.avatarURL)
+                                .addField(setLanguage.rClassletterTitleParty,
+                                    setLanguage.rClassletterParty)
+                            message.channel.send(themindhelp)
+                        }
                     }
                 } else {
-                    if (args[0] = ".classletter" || ".classlettre") {
-                        const themindhelp = new Discord.RichEmbed()
-                            .setTitle(setLanguage.rClassartTitle)
-                            .setColor("#008000")
-                            .setFooter("GameBot by Laizo", bot.user.avatarURL)
-                            .addField(setLanguage.rClassartTitleParty,
-                                setLanguage.rClassartParty)
-                        message.channel.send(themindhelp)
-                    }
+                    message.author.send(setLanguage.gBanned)
                 }
-            } else {
-                message.author.send(setLanguage.Banned)
             }
         } else {
             message.channel.send("The server is not configured, an administrator must perform : .config")
         }
+
     }
 };
