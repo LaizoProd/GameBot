@@ -1,4 +1,4 @@
-module.exports = class themind {
+module.exports = class punban {
     constructor() {
         this.name = 'partyunban',
             this.alias = ['punban'],
@@ -18,7 +18,7 @@ module.exports = class themind {
                         message.author.send(setLanguage.bNoPlayer)
                     }
                 } else {
-                    message.channel.send(".")
+                    message.channel.send(setLanguage.bImpossibleBan)
                 }
             } else {
                 message.channel.send("The server is not configured, an administrator must perform : .config")
