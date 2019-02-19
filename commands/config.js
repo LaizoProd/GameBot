@@ -57,10 +57,12 @@ module.exports = class config {
                                                             reaction.remove(user);
                                                             if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
                                                                 if (reaction.emoji.name === "✅") {
-                                                                    message.member.guild.createRole({
-                                                                        name: `pban`
-                                                                    })
-                                                                } else {
+                                                                    if (!message.member.guild.roles.find(role => role.name === "pban")) {
+                                                                        message.member.guild.createRole({
+                                                                            name: `pban`
+                                                                        })
+                                                                    }
+                                                                } else if (message.member.guild.roles.find(role => role.name === "pban")) {
                                                                     message.member.guild.roles.find(role => role.name === "pban").delete();
                                                                 }
                                                                 if (embedChannel == 1) {
@@ -81,11 +83,13 @@ module.exports = class config {
                                                                                         reaction.remove(user);
                                                                                         if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
                                                                                             if (reaction.emoji.name === "✅") {
-                                                                                                message.guild.createChannel("invitation", "text", [{
-                                                                                                    id: message.member.guild.roles.find(role => role.name === `@everyone`).id,
-                                                                                                    deny: ['SEND_MESSAGES']
-                                                                                                }]);
-                                                                                            } else {
+                                                                                                if (!message.member.guild.channels.find(channel => channel.name === "invitation")) {
+                                                                                                    message.guild.createChannel("invitation", "text", [{
+                                                                                                        id: message.member.guild.roles.find(role => role.name === `@everyone`).id,
+                                                                                                        deny: ['SEND_MESSAGES']
+                                                                                                    }]);
+                                                                                                }
+                                                                                            } else if (message.member.guild.channels.find(channel => channel.name === "invitation")) {
                                                                                                 message.member.guild.channels.find(channel => channel.name === "invitation").delete();
                                                                                             }
                                                                                         }
@@ -93,9 +97,6 @@ module.exports = class config {
                                                                                 }
                                                                             }))
                                                                         )
-                                                                } else {
-                                                                    editChannel.embeds[0].fields[0].value = setLanguage.cEmbedChannel;
-                                                                    editChannel.edit(new Discord.RichEmbed(editChannel.embeds[0]));
                                                                 }
                                                             }
                                                         }
@@ -105,6 +106,10 @@ module.exports = class config {
                                     } else {
                                         editRole.embeds[0].fields[0].value = setLanguage.cEmbedPban;
                                         editRole.edit(new Discord.RichEmbed(editRole.embeds[0]));
+                                        if (embedChannel == 2) {
+                                            editChannel.embeds[0].fields[0].value = setLanguage.cEmbedChannel;
+                                            editChannel.edit(new Discord.RichEmbed(editChannel.embeds[0]));
+                                        }
                                     }
                                 }
                             }
