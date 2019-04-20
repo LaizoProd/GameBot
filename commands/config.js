@@ -6,7 +6,7 @@ module.exports = class config {
             this.alias = ['config'],
             this.usage = '.configuration'
     }
-    run(bot, message, args, fr, en, setLanguage) {
+    run(bot, message, args, setLanguage, db) {
         message.delete()
         if (message.member.hasPermission("ADMINISTRATOR")) {
             var embedRole = 1;
@@ -27,15 +27,17 @@ module.exports = class config {
                             } else {
                                 reaction.remove(user);
                                 if (reaction.message.guild.members.get(user.id).hasPermission("ADMINISTRATOR")) {
+                                    db.set(message.guild.id)
+                                        .write()
                                     let setLanguage;
-                                    fr.delete(message.guild.id);
-                                    en.delete(message.guild.id);
                                     if (reaction.emoji.name === "🇨🇵") {
+                                        db.set(message.guild.id , 'fr')
+                                            .write();
                                         setLanguage = require("../language/fr.json");
-                                        fr.add(message.guild.id);
                                     } else {
+                                        db.set(message.guild.id, 'en')
+                                            .write();
                                         setLanguage = require("../language/en.json");
-                                        en.add(message.guild.id);
                                     }
                                     reaction.message.embeds[0].fields[0].value = setLanguage.cLanguage;
                                     reaction.message.edit(new Discord.RichEmbed(reaction.message.embeds[0]));
