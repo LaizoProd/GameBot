@@ -1,6 +1,6 @@
 {
   "name": "gamebot",
-  "version": "0.6.8",
+  "version": "0.7.6",
   "description": "discord bot",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
-    "djs-commands": "^1.2.2"
+    "djs-commands": "^1.2.2",
+    "lowdb": "^1.0.0"
   },
   "devDependencies": {},
   "keywords": []
