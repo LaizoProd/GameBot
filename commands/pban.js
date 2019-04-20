@@ -4,15 +4,14 @@ module.exports = class pban {
             this.alias = ['pban'],
             this.usage = '.partyban'
     }
-    run(bot, message, args, fr, en, setLanguage) {
+    run(bot, message, args, setLanguage, db) {
         message.delete()
         if (message.member.hasPermission("ADMINISTRATOR")) {
-            if (fr.has(message.guild.id) || en.has(message.guild.id)) {
+            if (db.get(message.guild.id).__wrapped__[message.guild.id] === "fr" || db.get(message.guild.id).__wrapped__[message.guild.id] === "en") {
                 if (!message.guild.roles.find(role => role.name === "pban") == undefined) {
                     let member = message.mentions.members.first();
                     if (member) {
-                        var role = message.guild.roles.find(role => role.name === "pban")
-                        member.addRole(role)
+                        member.addRole(message.guild.roles.find(role => role.name === "pban"))
                         message.channel.send(`${member} ${setLanguage.bAnnounce}`)
                     } else {
                         message.author.send(setLanguage.bNoPlayer)
