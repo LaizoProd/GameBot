@@ -3,10 +3,14 @@ const bot = new Discord.Client()
 const { CommandHandler } = require("djs-commands")
 const CH = new CommandHandler({
     folder: __dirname + '/commands/',
-    prefix: ['.', ';']
+    prefix: ['.']
 });
-const fr = new Set();
-const en = new Set();
+const low = require("lowdb")
+const FileSync = require("lowdb/adapters/fileSync")
+const adapter = new FileSync("ServerLanguage.json")
+const db = low(adapter);
+db.defaults({})
+    .write()
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} launched`)
@@ -20,13 +24,14 @@ bot.on("message", async message => {
     let command = CH.getCommand(args[0]);
     if (!command) return;
     let setLanguage;
-    if (fr.has(message.guild.id)) {
+    console.log(db.get(message.guild.id).__wrapped__[message.guild.id])
+    if (db.get(message.guild.id).__wrapped__[message.guild.id] === "fr") {
         setLanguage = require("./language/fr.json");
-    } else {
+    } else if (db.get(message.guild.id).__wrapped__[message.guild.id] === "en"){
         setLanguage = require("./language/en.json");
     }
     try {
-        command.run(bot, message, args, fr, en, setLanguage);
+        command.run(bot, message, args, setLanguage, db);
     } catch (e) {
         console.log(e)
     }
