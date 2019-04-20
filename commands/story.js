@@ -6,12 +6,12 @@ module.exports = class story {
             this.alias = ['histoire'],
             this.usage = '.story'
     }
-    run(bot, message, args) {
+    run(bot, message, args, setLanguage, db) {
         message.delete()
         let setLanguage;
-        if (args[0] === ".story"|| ";story") {
+        if (args[0] === ".story") {
             setLanguage = require("../language/en.json");
-        } else if (args[0] === ".histoire" || ";histoire") {
+        } else if (args[0] === ".histoire") {
             setLanguage = require("../language/fr.json");
         }
         const pbanembed = new Discord.RichEmbed()
