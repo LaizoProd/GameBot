@@ -1,14 +1,14 @@
 const Discord = require("discord.js");
 
-module.exports = class themind {
+module.exports = class help {
     constructor() {
         this.name = 'help',
             this.alias = ['h', 'aide', 'a'],
             this.usage = '.help'
     }
-    run(bot, message, args, fr, en, setLanguage) {
+    run(bot, message, args, setLanguage, db) {
         message.delete()
-        if (fr.has(message.guild.id) || en.has(message.guild.id)) {
+        if (db.get(message.guild.id).__wrapped__[message.guild.id] === "fr" || db.get(message.guild.id).__wrapped__[message.guild.id] === "en") {
             if (!message.member.hasPermission("ADMINISTRATOR")) {
                 const help = new Discord.RichEmbed()
                     .setTitle(setLanguage.hTitle)
@@ -31,7 +31,7 @@ module.exports = class themind {
                 message.channel.send(helpadmin)
             }
         } else {
-            message.channel.send("The server is not configured, perform : .config")
+            message.channel.send("The server is not configured, an administrator must perform : .config")
         }
     }
 };
